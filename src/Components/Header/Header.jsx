@@ -11,10 +11,10 @@ import {Link} from 'react-router-dom'
                         alt="whatever"
                         className="logo"/>
                         <h1>SHELFIE</h1>
+                        
                     </div>
-                
-                </header>
-                <div className="links">
+
+                    <div className="links">
                     <Link
                     to='/'
                     >
@@ -30,6 +30,9 @@ import {Link} from 'react-router-dom'
                         </button>
                         </Link>
                 </div>
+                
+                </header>
+                
             </div>
         )
     }

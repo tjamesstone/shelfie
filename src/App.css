@@ -8,6 +8,16 @@
 
 }
 
+.links{
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbutton{
+  background: #ed6b5a;
+}
+
 .delete {
 background: #3ad886;
 }

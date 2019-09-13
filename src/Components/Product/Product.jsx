@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-
+import {Link} from 'react-router-dom'
 
  export default class Product extends Component{
 
@@ -14,7 +14,7 @@ import axios from 'axios'
     }
 
     render(){
-        const {name, price, img} =this.props
+        const {name, price, img, id} =this.props
         return(
             <div className="productcontainer">
                 <div 
@@ -33,9 +33,14 @@ import axios from 'axios'
                     className="delete">
                         Delete
                     </button>
-                    <button className="edit">
+                    <Link
+                    to={`/edit/${id}`}
+                    ><button 
+                    onClick={() => this.props.setId(id)}
+                    className="edit">
                         Edit
                     </button>
+                    </Link>
                 </div>
                
                 
