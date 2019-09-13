@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+  width: 100%;
+  
+  display:flex;
+  flex-direction: column;
+  
+
+}
+
+.headercontainer {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.logo{
+  height: 50px;
+  width: 50px;
+  
+  
+}
+
+header {
+  width: 100vw;
+ height: 100px;
+ background-color: #ab2a19;
+ display: flex;
+ color: white;
+ align-items: center;
+ padding-left: 70px;
+ 
+}
+
+.form{
+  width: 350px;
+  height: 520px;
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 7px;
+  background-color: #3ad886;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.form_image_preview {
+  width: 320px;
+  height: 200px;
+  margin: 7px auto;
+  background-position: 50%;
+  background-size: cover;
+  border: 1px solid #ab2a19;
+  background-image: url(https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png);
+}
+
+
+
+
+
