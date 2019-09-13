@@ -1,2 +1,3 @@
-DELETE FROM products
-WHERE id = $1;
+  
+delete from product
+where id = $1

@@ -1,1 +1,1 @@
-SELECT * FROM products;
+select * from product;

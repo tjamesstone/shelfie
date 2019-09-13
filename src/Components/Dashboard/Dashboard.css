@@ -1,0 +1,8 @@
+  
+.Dashboard{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    /* border: 1px solid yellow; */
+    width: 40%;
+  }

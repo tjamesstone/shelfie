@@ -1,51 +1,41 @@
-import React, {Component} from 'react'
-import axios from 'axios'
+import React, { Component } from 'react'
+import './Product.css'
+import axios from 'axios';
 import {Link} from 'react-router-dom'
 
- export default class Product extends Component{
+class Product extends Component {
 
-    
+  handleDelete = () => {
+    let {id} = this.props
+    axios.delete(`/api/products/${id}`).then(() => {
+      window.location.reload()
+    })
+  }
 
-    delete = () => {
-        let {id} = this.props
-        axios.delete(`/api/products/${id}`).then(() => {
-            window.location.reload()
-        })
-    }
+  render() {
 
-    render(){
-        const {name, price, img, id} =this.props
-        return(
-            <div className="productcontainer">
-                <div 
-                
-                className="product_img">
-                    <img src={img} alt={name}/>
-                </div>
-                <div className="product_box">
-                    <p>{name}</p>
-                        
-                    <p>${price}</p>
-                </div>
-                <div className="buttons_box">
-                    <button 
-                    onClick={this.delete}
-                    className="delete">
-                        Delete
-                    </button>
-                    <Link
-                    to={`/edit/${id}`}
-                    ><button 
-                    onClick={() => this.props.setId(id)}
-                    className="edit">
-                        Edit
-                    </button>
-                    </Link>
-                </div>
-               
-                
-                
-            </div>
-        )
-    }
+    let { name, price, img, id } = this.props
+
+    return (
+
+
+      <div className='ProductHolder'>
+        <img src={img} alt={name} className='ProductImage' />
+        <div className={'RightSide'}>
+          <div className='TextHold'>
+            <span className='Text'>{name}</span>
+            <span className='Text'>${price}</span>
+          </div>
+          <div className='Buttons'>
+
+          <Link to={`/edit/${id}`}><button className='GreenButton'
+          onClick={() => this.props.setId(id)}>Edit</button></Link>
+          <button className='GreenButton' onClick={this.handleDelete}>Delete</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
+
+export default Product

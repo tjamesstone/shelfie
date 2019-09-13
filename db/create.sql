@@ -1,2 +1,3 @@
-INSERT INTO products (name, img_url, price)
-VALUES (${name}, ${img_url}, ${price});
+insert into product
+(name, price, img)
+values($1, $2, $3)

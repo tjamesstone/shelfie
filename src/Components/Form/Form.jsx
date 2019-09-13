@@ -1,9 +1,10 @@
-  
 import React, { Component } from 'react'
+import './Form.css'
+import noImage from './empty-image.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-export default class Form extends Component {
+class Form extends Component {
 
   state = {
     edit: false,
@@ -82,68 +83,68 @@ export default class Form extends Component {
 
 
 
-  
+  render() {
+
+    let url
+
+    if(this.state.imgurl.endsWith('.jpg') || this.state.imgurl.endsWith('.gif') || this.state.imgurl.endsWith('.png')){
+      url = this.state.imgurl
+    } else {
+      url = noImage
+    }
 
 
-    render(){
-        // console.log(this.state.name)
 
-        const defaultImg= 'https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png'
+    return (
 
-        let urllink
+      <div className='FormHolder'>
+        <div className="Form">
 
-        if(this.state.imgurl.endsWith('.jpg') || this.state.imgurl.endsWith('.gif') || this.state.imgurl.endsWith('.png')){
-          urllink = this.state.imgurl
-        } else {
-          urllink = defaultImg
-        }
-        
-        return(
-            <div className='form'>
-                <div
-                className="form_image_preview">
-                     <img className='displayimg'
-                    src={urllink}
-                alt={this.state.name}
+          <img className='Image'
+            src={url}
+            alt={this.state.name}
             
           />
-                </div>
-                <div className="imgurl">
-                Image URL:
-                    <input 
-                    name='imgurl'
-                    value={this.state.imgurl}
-                    onChange={this.handleChange}
-                    type="text" className="img"/>
-                </div>
 
-                <div className="productname">
-                    Product Name:
-                    <input 
-                    name='name'
-                    value={this.state.name}
-                    onChange={ this.handleChange}
-                    type="text" className="product"/>
-                </div>
-                <div className="price">
-                    Price:
-                    <input 
-                    name='price'
-                    value={this.state.price}
-                    onChange={ this.handleChange}
-                    type="number" className="priceinput"/>
-                </div>
-                <div className="buttons">
-                <Link to='/'>
-                <button className='cancel' onClick={this.clearForm}>Cancel</button>
+          <div className="FormInputs">
+
+            <span className='InputLabel'>Image URL:</span><br />
+            <input className='FormInput'
+              type="text"
+              name='imgurl'
+              onChange={this.handleChange}
+              value={this.state.imgurl} /><br />
+
+            <span className='InputLabel'>Name:</span><br />
+            <input className='FormInput'
+              type="text"
+              name='name'
+              onChange={this.handleChange}
+              value={this.state.name} /><br />
+
+            <span className='InputLabel'>Price:</span><br />
+            <input className='FormInput'
+              type="number"
+              name='price'
+              onChange={this.handleChange}
+              value={this.state.price} />
+
+
+            <div className="ButtonHold">
+              <Link to='/'>
+                <button className='Cancel' onClick={this.clearForm}>Cancel</button>
               </Link>
               <div>{this.state.edit ? <Link to='/'>
-                <button className='submit' onClick={this.updateProduct}>Save Changes</button>
+                <button className='Submit' onClick={this.updateProduct}>Save Changes</button>
               </Link> : <Link to='/'><button
-                className='addtoinv'
+                className='Submit'
                 onClick={this.newProduct}>Add to Inventory</button></Link>}</div>
-                </div>
             </div>
-        )
-    }
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
+
+export default Form

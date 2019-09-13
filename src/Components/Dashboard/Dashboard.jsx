@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
+import './Dashboard.css'
 import Product from './../Product/Product'
 import axios from 'axios'
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
 
   state={
     inventory: []
@@ -14,7 +15,7 @@ export default class Dashboard extends Component {
         inventory: res.data
       })
     }).catch(err => {
-      console.log("error: err")
+      console.log(`ERROR: ${err}`)
     })
 
   }
@@ -25,29 +26,25 @@ export default class Dashboard extends Component {
 
   
 
-    
-    render(){
+  render() {
 
-        const {inventory} = this.state
+    const {inventory} = this.state
 
-        return(
-            <div className="inventorylist">
-            
-            {
-              inventory.map( product => {
-              return <Product 
-              
-              key={ product.id } 
-              id={ product.id}
-              name={product.name}
-              imgurl={ product.img }  
-              price={ product.price } 
-              setId={this.setId}
-               />
-              })
-            }
+    const showProducts = inventory.map(product => {
+      return <Product 
+      key={product.id} 
+      id={product.id} 
+      name={product.name} 
+      price={product.price} 
+      img={product.img}
+      setId={this.setId}/>
+    })
 
-            </div>
-        )
-    }
+    return(
+
+      <div className='Dashboard'>{showProducts}</div>
+    )
+  }
 }
+
+export default Dashboard
