@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Form.css'
+
 import noImage from './empty-image.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
