@@ -1,105 +1,89 @@
-import React, {Component} from 'react'
+  
+import React, { Component } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+export default class Form extends Component {
 
+  state = {
+    edit: false,
+    defaultImg: false,
+    name: '',
+    price: 0,
+    imgurl: ''
+  }
 
-
- export default class Form extends Component{
-    constructor(){
-        super()
-        this.state = {
-            edit: false,
-            defaultImage: false,
-            name: '',
-            price: 0,
-            imgurl: ''
-        }
-
-        this.postNewProduct = this.postNewProduct.bind(this)
-    }
-
-    componentDidUpdate(oldProps, ) {
-      if (oldProps !== this.props) {
-        if (this.props.editId !== 0) {
-          this.setState({
-            edit: true
-          })
-        }
-        let { name, price, imgurl } = this.props.props
+  componentDidUpdate(oldProps, ) {
+    if (oldProps !== this.props) {
+      if (this.props.editId !== 0) {
         this.setState({
-          name: name,
-          price: price,
-          imgurl: imgurl
+          edit: true
         })
       }
+      let { name, price, imgurl } = this.props.props
+      this.setState({
+        name: name,
+        price: price,
+        imgurl: imgurl
+      })
+    }
+  }
+
+  newProduct = () => {
+    let { name, price, imgurl } = this.state
+    let newProduct = {
+      name: name,
+      price: price,
+      img: imgurl
+    }
+    axios.post('/api/products', newProduct).then(() => {
+      this.clearForm()
+    })
+  }
+
+  updateProduct = () => {
+
+    let update = {
+      name: this.state.name,
+      price: this.state.price,
+      img: this.state.imgurl
     }
 
-    handleChangeName (val){
-        this.setState({
-            name: val
-        })
-    }
-    handleChangePrice(val){
-        this.setState({
-            price: val
-        })
-    }
-    handleChangeImgurl(val){
-        this.setState({
-            imgurl: val
-        })
-    }
+    axios.put(`/api/products/${this.props.editId}`, update).then(() => {
+      this.clearForm()
+    })
+  }
 
-    postNewProduct = () => {
-        let { name, price, imgurl } = this.state
-        let newProduct = {
-          name: name,
-          price: price,
-          img: imgurl
-        }
-        axios.post('/api/products', newProduct).then(() => {
-          this.clearForm()
-        })
-      }
 
-    clearForm = () => {
-        this.setState({
-          name: '',
-          price: 0,
-          imgurl: '',
-          edit: false
-        })
-    
-      }
+  clearForm = () => {
+    this.setState({
+      name: '',
+      price: 0,
+      imgurl: '',
+      edit: false
+    })
 
-      updateProduct = () => {
+  }
 
-        let update = {
-          name: this.state.name,
-          price: this.state.price,
-          img: this.state.imgurl
-        }
-    
-        axios.put(`/api/products/${this.props.editId}`, update).then(() => {
-          this.clearForm()
-        })
-      }
 
-      defaultTrue = () => {
-        this.setState({
-          defaultImg: true
-        })
-      }
-    
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
 
-      handleChange = (e) => {
-        this.setState({
-          [e.target.name]: e.target.value
-        })
-    }
+  }
+
+  defaultTrue = () => {
+    this.setState({
+      defaultImg: true
+    })
+  }
+
+
+
 
   
+
 
     render(){
         // console.log(this.state.name)

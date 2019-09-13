@@ -1,30 +1,30 @@
 import React, {Component} from 'react'
-import Product from '../Product/Product'
+import Product from './../Product/Product'
 import axios from 'axios'
 
+export default class Dashboard extends Component {
 
- export default class Dashboard extends Component{
-    constructor(){
-        super()
-        this.state ={
-            inventory: []
-        }
-    }
+  state={
+    inventory: []
+  }
 
-    componentDidMount() {
-        axios.get('/api/products').then(res => {
-          this.setState({
-            inventory: res.data
-          })
-        }).catch(err => {
-          console.log( `errorMessage: ${err}`)
-        })
-    }
+  componentDidMount() {
+    axios.get('/api/products').then(res => {
+      this.setState({
+        inventory: res.data
+      })
+    }).catch(err => {
+      console.log("error: err")
+    })
 
-    setId = (id)=> {
-        this.props.setId(id)
-    }
-    
+  }
+
+  setId = (id) => {
+    this.props.setId(id)
+  }
+
+  
+
     
     render(){
 

@@ -9,9 +9,11 @@ const app = express()
 
 app.use(express.json())
 
-app.get("/api/products", ctrl.getAll)
-app.post("/api/products", ctrl.post)
-app.delete('/api/products/:id', ctrl.delete)
+app.get('/api/products', ctrl.getAll)
+app.get('/api/products/:id', ctrl.getById)
+app.post('/api/products', ctrl.create)
+app.delete(`/api/products/:id`, ctrl.delete)
+app.put(`/api/products/:id`, ctrl.update)
 
 massive(CONNECTION_STRING)
 .then(db => {
