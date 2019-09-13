@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 
 
@@ -16,6 +17,22 @@ import axios from 'axios'
         }
 
         this.postNewProduct = this.postNewProduct.bind(this)
+    }
+
+    componentDidUpdate(oldProps, ) {
+      if (oldProps !== this.props) {
+        if (this.props.editId !== 0) {
+          this.setState({
+            edit: true
+          })
+        }
+        let { name, price, imgurl } = this.props.props
+        this.setState({
+          name: name,
+          price: price,
+          imgurl: imgurl
+        })
+      }
     }
 
     handleChangeName (val){
@@ -54,6 +71,19 @@ import axios from 'axios'
           edit: false
         })
     
+      }
+
+      updateProduct = () => {
+
+        let update = {
+          name: this.state.name,
+          price: this.state.price,
+          img: this.state.imgurl
+        }
+    
+        axios.put(`/api/products/${this.props.editId}`, update).then(() => {
+          this.clearForm()
+        })
       }
 
       defaultTrue = () => {
@@ -120,17 +150,14 @@ import axios from 'axios'
                     type="number" className="priceinput"/>
                 </div>
                 <div className="buttons">
-                    <button     
-                    onClick={this.clearForm}                   
-                    
-                    className="cancel">
-                        Cancel
-                    </button>
-                    <button 
-                    onClick={this.postNewProduct}
-                    className="addtoinv">
-                        Add to Inventory
-                    </button>
+                <Link to='/'>
+                <button className='cancel' onClick={this.clearForm}>Cancel</button>
+              </Link>
+              <div>{this.state.edit ? <Link to='/'>
+                <button className='submit' onClick={this.updateProduct}>Save Changes</button>
+              </Link> : <Link to='/'><button
+                className='addtoinv'
+                onClick={this.newProduct}>Add to Inventory</button></Link>}</div>
                 </div>
             </div>
         )
