@@ -8,6 +8,22 @@
 
 }
 
+.delete {
+background: #3ad886;
+}
+
+.edit {
+background: #3ad886;
+}
+
+Button {
+  padding: 10px;
+  border-radius:  7x;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+}
+
 .headercontainer {
   display: flex;
   flex-direction: row;
@@ -22,6 +38,60 @@
   width: 50px;
   
   
+}
+.product_box {
+  display: flex;
+  justify-content: space-between;
+  font-size: large;
+}
+.imgurl {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  font-size: xx-large;
+}
+
+.productname {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  font-size: xx-large;
+}
+
+.price {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  font-size: xx-large;
+}
+
+.buttons{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product_img {
+  width: 320px;
+  height: 200px;
+  margin: 0 auto;
+  background-position: 50%;
+  background-size: cover;
+  
+}
+
+.productcontainer {
+  width: 450px;
+  height: 316px;
+  background: #d34735;
+  border-radius: 7px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.buttons_box {
+  display: flex;
+  justify-content: space-between;
 }
 
 header {
@@ -58,7 +128,12 @@ header {
   background-position: 50%;
   background-size: cover;
   border: 1px solid #ab2a19;
-  background-image: url(https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png);
+
+}
+
+.displayimg {
+  width: 320px;
+  height: 200px;
 }
 
 

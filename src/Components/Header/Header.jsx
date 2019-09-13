@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
  export default class Header extends Component{
     render(){
@@ -11,7 +12,24 @@ import React, {Component} from 'react'
                         className="logo"/>
                         <h1>SHELFIE</h1>
                     </div>
+                
                 </header>
+                <div className="links">
+                    <Link
+                    to='/'
+                    >
+                        <button className="navbutton">
+                            Dashboard
+                        </button>
+                        </Link>
+                        <Link
+                    to='/add'
+                    >
+                        <button className="navbutton">
+                            Add Inventory
+                        </button>
+                        </Link>
+                </div>
             </div>
         )
     }

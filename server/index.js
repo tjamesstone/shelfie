@@ -1,4 +1,4 @@
-require('dotenv').config
+require('dotenv').config()
 
 const express = require('express')
 const massive = require('massive')
@@ -8,6 +8,10 @@ const ctrl = require('./controller')
 const app = express()
 
 app.use(express.json())
+
+app.get("/api/products", ctrl.getAll)
+app.post("/api/products", ctrl.post)
+app.delete('/api/products/:id', ctrl.delete)
 
 massive(CONNECTION_STRING)
 .then(db => {
