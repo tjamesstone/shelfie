@@ -41,7 +41,7 @@ class App extends Component {
 
           <Header />
 
-          <div className='Body'>
+          <div className='body'>
             <Switch>
               <Route exact path='/' render={() => <Dashboard
                 setID={this.setID}

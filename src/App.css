@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.Body{
+.body{
   display: flex;
   justify-content: center;
   /* border: 1px solid black; */
