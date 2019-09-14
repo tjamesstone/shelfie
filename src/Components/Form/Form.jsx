@@ -4,7 +4,7 @@ import noImage from './empty-image.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-class Form extends Component {
+export default class Form extends Component {
 
   state = {
     edit: false,
@@ -87,64 +87,63 @@ class Form extends Component {
 
     let url
 
-    if(this.state.imgurl.endsWith('.jpg') || this.state.imgurl.endsWith('.gif') || this.state.imgurl.endsWith('.png')){
-      url = this.state.imgurl
-    } else {
+    if(this.state.imgurl === ''){
       url = noImage
+    } else {
+      url = this.state.imgurl
     }
 
 
 
     return (
 
-      <div className='FormHolder'>
-        <div className="Form">
+      
+        <div className="form">
 
-          <img className='Image'
+          <img className='form_image_preview'
             src={url}
             alt={this.state.name}
             
           />
 
-          <div className="FormInputs">
+          <div className="form_inputs">
 
-            <span className='InputLabel'>Image URL:</span><br />
-            <input className='FormInput'
+            <p>Image URL:</p> 
+            <input className='form_inputs'
               type="text"
               name='imgurl'
               onChange={this.handleChange}
-              value={this.state.imgurl} /><br />
+              value={this.state.imgurl} /> 
 
-            <span className='InputLabel'>Name:</span><br />
-            <input className='FormInput'
+            <p>Name:</p> 
+            <input className='form_inputs'
               type="text"
               name='name'
               onChange={this.handleChange}
-              value={this.state.name} /><br />
+              value={this.state.name} /> 
 
-            <span className='InputLabel'>Price:</span><br />
-            <input className='FormInput'
+            <p>Price:</p> 
+            <input className='form_inputs'
               type="number"
               name='price'
               onChange={this.handleChange}
               value={this.state.price} />
 
 
-            <div className="ButtonHold">
+            <div className="button_holder">
               <Link to='/'>
-                <button className='Cancel' onClick={this.clearState}>Cancel</button>
+                <button className='cancel' onClick={this.clearState}>Cancel</button>
               </Link>
               <div>{this.state.edit ? <Link to='/'>
-                <button className='Submit' onClick={this.updateProduct}>Save Changes</button>
+                <button className='submit' onClick={this.updateProduct}>Save Changes</button>
               </Link> : <Link to='/'><button
-                className='Submit'
+                className='submit'
                 onClick={this.postNewProduct}>Add to Inventory</button></Link>}</div>
             </div>
           </div>
         </div>
-      </div>
+     
     )
   }
 }
 
-export default Form

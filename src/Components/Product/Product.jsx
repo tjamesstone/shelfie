@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 
-class Product extends Component {
+export default class Product extends Component {
 
-  handleDelete = () => {
+  delete = () => {
     let {id} = this.props
     axios.delete(`/api/products/${id}`).then(() => {
       window.location.reload()
@@ -18,18 +18,19 @@ class Product extends Component {
     return (
 
 
-      <div className='ProductHolder'>
-        <img src={img} alt={name} className='ProductImage' />
-        <div className={'RightSide'}>
-          <div className='TextHold'>
-            <span className='Text'>{name}</span>
-            <span className='Text'>${price}</span>
+      <div className='productcontainer'>
+        <img src={img} alt={name} className='product_image' />
+        <div className='imgandtext'>
+          <div className='producttextholder'>
+            
+            <h3 className='nametext'>{name}</h3>
+            <h3 className='pricetext'>${price}</h3>
           </div>
-          <div className='Buttons'>
+          <div className='productbuttonsholder'>
 
-          <Link to={`/edit/${id}`}><button className='GreenButton'
+          <Link to={`/edit/${id}`}><button className='productbuttons'
           onClick={() => this.props.setID(id)}>Edit</button></Link>
-          <button className='GreenButton' onClick={this.handleDelete}>Delete</button>
+          <button className='productbuttons' onClick={this.delete}>Delete</button>
           </div>
         </div>
       </div>
@@ -37,4 +38,3 @@ class Product extends Component {
   }
 }
 
-export default Product

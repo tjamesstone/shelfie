@@ -106,14 +106,7 @@ Button {
   
 }
 
-.productcontainer {
-  width: 450px;
-  height: 316px;
-  background: #d34735;
-  border-radius: 7px;
-  padding: 15px;
-  margin-bottom: 20px;
-}
+
 
 .buttons_box {
   display: flex;
@@ -140,6 +133,9 @@ header {
   background-color: #3ad886;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  font-weight: 500;
+  font-size: large;
 }
 
 .buttons {
@@ -172,42 +168,38 @@ header {
   margin-top: 40px;
 }
 
-.Form{
-  background-color: #3AD886;
-  margin-top: 10px;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-}
+
 
 .Image{
   width: 80%;
   height: 215px;
   margin-top: 10px;
 }
-.ProductHolder{
+
+
+.productcontainer {
   background-color: #D34735;
-  width: 100%;
-  height: 25vh;
+  width: 600px;
+  height: 316px;
   margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
   
 .dashboard{
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   margin-top: 40px;
   /* border: 1px solid yellow; */
-  width: 40%;
+ 
 }
 
-.ProductImage{
+.product_image{
   height: 80%;
   min-width: 60%;
   max-width: 60%;
@@ -228,7 +220,7 @@ header {
   margin-bottom: 5px;
 }
 
-.RightSide{
+.imgandtext{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -237,35 +229,40 @@ header {
   width: 33%;
 }
 
-.Buttons{
+.producttextholder {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.GreenButton{
+.productbuttonsholder {
+  display: flex;
+  justify-content: space-around;
+}
+
+.productbuttons{
   background-color: #3AD886;
 }
 
-.FormInputs{
-  width: 90%;
-  margin: 20px 0;
-}
-
-.FormInput{
+.form_inputs{
   width: 100%;
+  text-align: left;
 }
 
-.ButtonHold{
+
+
+.button_holder{
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
 
-.Cancel{
+.cancel{
   background-color: #ED6B5A
 }
 
-.Submit{
+.submit{
   background-color: #ED6B5A;
 }
 
