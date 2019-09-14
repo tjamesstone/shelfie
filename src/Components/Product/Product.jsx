@@ -28,7 +28,7 @@ class Product extends Component {
           <div className='Buttons'>
 
           <Link to={`/edit/${id}`}><button className='GreenButton'
-          onClick={() => this.props.setId(id)}>Edit</button></Link>
+          onClick={() => this.props.setID(id)}>Edit</button></Link>
           <button className='GreenButton' onClick={this.handleDelete}>Delete</button>
           </div>
         </div>

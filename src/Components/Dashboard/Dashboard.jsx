@@ -20,8 +20,8 @@ class Dashboard extends Component {
 
   }
 
-  setId = (id) => {
-    this.props.setId(id)
+  setID = (id) => {
+    this.props.setID(id)
   }
 
   
@@ -37,7 +37,7 @@ class Dashboard extends Component {
       name={product.name} 
       price={product.price} 
       img={product.img}
-      setId={this.setId}/>
+      setID={this.setID}/>
     })
 
     return(

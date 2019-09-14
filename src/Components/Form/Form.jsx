@@ -16,7 +16,7 @@ class Form extends Component {
 
   componentDidUpdate(oldProps, ) {
     if (oldProps !== this.props) {
-      if (this.props.editId !== 0) {
+      if (this.props.updateID !== 0) {
         this.setState({
           edit: true
         })
@@ -30,7 +30,7 @@ class Form extends Component {
     }
   }
 
-  newProduct = () => {
+  postNewProduct = () => {
     let { name, price, imgurl } = this.state
     let newProduct = {
       name: name,
@@ -38,7 +38,7 @@ class Form extends Component {
       img: imgurl
     }
     axios.post('/api/products', newProduct).then(() => {
-      this.clearForm()
+      this.clearState()
     })
   }
 
@@ -50,13 +50,13 @@ class Form extends Component {
       img: this.state.imgurl
     }
 
-    axios.put(`/api/products/${this.props.editId}`, update).then(() => {
-      this.clearForm()
+    axios.put(`/api/products/${this.props.updateID}`, update).then(() => {
+      this.clearState()
     })
   }
 
 
-  clearForm = () => {
+  clearState = () => {
     this.setState({
       name: '',
       price: 0,
@@ -132,13 +132,13 @@ class Form extends Component {
 
             <div className="ButtonHold">
               <Link to='/'>
-                <button className='Cancel' onClick={this.clearForm}>Cancel</button>
+                <button className='Cancel' onClick={this.clearState}>Cancel</button>
               </Link>
               <div>{this.state.edit ? <Link to='/'>
                 <button className='Submit' onClick={this.updateProduct}>Save Changes</button>
               </Link> : <Link to='/'><button
                 className='Submit'
-                onClick={this.newProduct}>Add to Inventory</button></Link>}</div>
+                onClick={this.postNewProduct}>Add to Inventory</button></Link>}</div>
             </div>
           </div>
         </div>

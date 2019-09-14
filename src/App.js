@@ -11,7 +11,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 class App extends Component {
 
   state = {
-    editId: 0,
+    updateID: 0,
     name: '',
     price: '',
     imgurl: ''
@@ -19,12 +19,12 @@ class App extends Component {
 
   
 
-  setId = (id) => {
+  setID = (id) => {
 
     axios.get(`/api/products/${id}`).then(res => {
       let { name, price, img } = res.data[0]
       this.setState({
-        editId: id,
+        updateID: id,
         name: name,
         price: price,
         imgurl: img,
@@ -44,13 +44,13 @@ class App extends Component {
           <div className='Body'>
             <Switch>
               <Route exact path='/' render={() => <Dashboard
-                setId={this.setId}
+                setID={this.setID}
                 inventory={this.state.inventory} />} />
-              <Route path='/add' render={() => <Form setId={this.setId}
-                editId={this.state.editId}
+              <Route path='/add' render={() => <Form setID={this.setID}
+                updateID={this.state.updateID}
                 props={this.state} />} />
-              <Route path='/edit/:id' render={() => <Form setId={this.setId}
-                editId={this.state.editId}
+              <Route path='/edit/:id' render={() => <Form setID={this.setID}
+                updateID={this.state.updateID}
                 props={this.state} />} />
             </Switch>
 

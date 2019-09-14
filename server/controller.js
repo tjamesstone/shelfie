@@ -1,57 +1,67 @@
 module.exports = {
-  getAll (req, res) {
+  get_all_products (req, res) {
     const db = req.app.get('db')
-    db.get_all_products().then(result => {
-      res.status(200).send(result)
+    db.get_all_products()
+    .then(result => {
+      res.status(200)
+      .send(result)
     }).catch(err => {
-      console.log(`ERROR: ${err}`)
-      res.status(500).send(`Failed to fetch inventory`)
+      console.log(`error: ${err}`)
+      res.status(500).send('Yo error')
     })
   },
 
-  getById (req, res) {
+  get_product (req, res) {
     const db = req.app.get('db')
     let {id} = req. params
-    db.getById(id).then(result => {
+    db.getById(id)
+    .then(result => {
       res.status(200).send(result)
-    }).catch(err => {
-      console.log(`ERROR: ${err}`)
-      res.status(500).send(`Failed to fetch item`)
+    })
+    .catch(err => {
+      console.log(`error: ${err}`)
+      res.status(500).send('Yo error')
     })
   },
 
-  create (req,res) {
+  create_product (req,res) {
     const db = req.app.get('db')
     let {name, price, img} = req.body
-    db.create(name, price, img).then(result =>{
+    db.create(name, price, img)
+    .then(result =>{
       res.sendStatus(200)
-    }).catch(err => {
-      console.log(`ERROR: ${err}`)
-      res.status(500).send(`Failed to create record`)
+    })
+    .catch(err => {
+      console.log(`error: ${err}`)
+      res.status(500).send('Yo error')
     })
   },
 
-  delete (req,res) {
+  delete_product (req,res) {
     const db = req.app.get('db')
     let {id} = req.params
-    db.delete_products(id).then(result => {
+    db.delete_product(id)
+    .then(result => {
       res.sendStatus(200)
-    }).catch(err => {
-      console.log(`ERROR: ${err}`)
-      res.status(500).send(`Failed to delete record`)
+    })
+    .catch(err => {
+      console.log(`error: ${err}`)
+      res.status(500).send('Yo error')
     })
   },
 
-  update (req, res) {
+  update_product (req, res) {
     const db=req.app.get('db')
     let {name, price, img} = req.body
     let {id} = req.params
 
-    db.update(id, name, +price, img).then(result => {
+    db.update(id, name, +price, img)
+    .then(result => {
       res.sendStatus(200)
-    }).catch(err => {
-      console.log(`ERROR: ${err}`)
-      res.status(500).send(`Failed to update record`)
+    })
+    .catch(err => {
+      console.log(`error: ${err}`)
+      res.status(500).send('Yo error')
     })
   }
 }
