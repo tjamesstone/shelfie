@@ -30,19 +30,25 @@ class Dashboard extends Component {
 
     const {inventory} = this.state
 
-    const showProducts = inventory.map(product => {
-      return <Product 
+    return(
+
+      <div className='dashboard'>
+      
+      {inventory.map(product => (
+       <Product 
       key={product.id} 
       id={product.id} 
       name={product.name} 
       price={product.price} 
       img={product.img}
       setID={this.setID}/>
-    })
-
-    return(
-
-      <div className='Dashboard'>{showProducts}</div>
+      ))
+  }
+      
+      
+      
+      
+      </div>
     )
   }
 }
