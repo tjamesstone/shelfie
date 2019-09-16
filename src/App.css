@@ -158,23 +158,11 @@ header {
   height: 200px;
 }
 
-.FormHolder{
-  margin-right: 50px;
-  /* border: 1px solid green; */
-  width: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 40px;
-}
 
 
 
-.Image{
-  width: 80%;
-  height: 215px;
-  margin-top: 10px;
-}
+
+
 
 
 .productcontainer {
@@ -206,19 +194,7 @@ header {
   margin-left: 20px;
 }
 
-.TextHold{
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
 
-.Text{
-  font-size: 18px;
-  font-weight: 500;
-  margin-left: 10px;
-  margin-bottom: 5px;
-}
 
 .imgandtext{
   display: flex;

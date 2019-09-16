@@ -7,11 +7,11 @@ const ctrl = require('./controller')
 
 app.use(express.json())
 
+app.delete(`/api/products/:id`, ctrl.delete_product)
 app.get('/api/products', ctrl.get_all_products)
+app.put(`/api/products/:id`, ctrl.update_product)
 app.get('/api/products/:id', ctrl.get_product)
 app.post('/api/products', ctrl.create_product)
-app.delete(`/api/products/:id`, ctrl.delete_product)
-app.put(`/api/products/:id`, ctrl.update_product)
 
 massive(CONNECTION_STRING).then(dbInstance => {
   app.set('db', dbInstance)
